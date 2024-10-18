@@ -1,58 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #121212;
-    color: white;
+    color: #FFFFFF;
     margin: 0;
     padding: 20px;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 1px;
     text-align: center;
+    margin-bottom: 30px; /* Увеличиваем отступ снизу */
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #FF4500;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px; /* Увеличиваем отступ снизу */
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.small-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #AAAAAA;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 1200px; /* Ограничиваем максимальную ширину */
+    margin: 0 auto; /* Центрируем контейнер */
+    padding: 20px; /* Отступы вокруг контейнера */
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Адаптивные колонки */
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Адаптивные колонки с минимальной шириной */
+    gap: 25px; /* Увеличиваем промежутки между элементами */
+    padding: 20px; /* Отступы вокруг сетки */
+    width: 100%; /* Устанавливаем ширину контейнера */
 }
 
 .cell {
-    background-color: #1e1e1e; /* Цвет фона кнопки */
+    background-color: #1e1e1e;
     border-radius: 10px;
-    overflow: hidden; /* Прячем все, что выходит за рамки контейнера */
+    overflow: hidden;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
+    padding: 10px; /* Дополнительный отступ внутри блока */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Добавляем тень для объема */
 }
 
 .cell:hover {
     background-color: #2e2e2e;
+    transform: translateY(-5px); /* Эффект поднятия при наведении */
 }
 
 .tech-image {
-    width: 100%; /* Ширина изображения 100% */
-    height: auto; /* Авто высота для сохранения пропорций */
-    background-color: #1e1e1e; /* Цвет фона изображения */
+    width: 100%;
+    height: auto;
+    background-color: #1e1e1e;
 }
 
 .tech-label {
-    background: rgba(30, 30, 30, 0.9); /* Полупрозрачный фон */
-    color: white; /* Цвет текста */
-    padding: 10px; /* Отступы */
-    text-align: center; /* Центрируем текст */
-    border-radius: 0 0 10px 10px; /* Закругляем нижние углы */
-    word-wrap: break-word; /* Перенос слов, если текст длинный */
-    min-height: 40px; /* Минимальная высота для текста */
-    box-sizing: border-box; /* Учитываем отступы в ширине */
+    background: rgba(30, 30, 30, 0.9);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    word-wrap: break-word;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin-top: 10px; /* Дополнительный отступ сверху */
 }
 
 .modal {
     display: none;
+    opacity: 0; /* Прозрачное в скрытом состоянии */
+    transition: opacity 0.3s ease; /* Плавная анимация изменения прозрачности */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -66,14 +112,14 @@ h1 {
 .modal-content {
     background-color: #1e1e1e;
     margin: 15% auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
     width: 80%;
     border-radius: 10px;
     max-width: 600px;
     word-wrap: break-word;
-    font-size: 20px; /* Увеличенный размер шрифта */
-    line-height: 1.5; /* Высота строки для лучшей читаемости */
+    font-size: 20px;
+    line-height: 1.8; /* Увеличиваем межстрочный интервал для удобства чтения */
 }
 
 .close-button {
@@ -81,26 +127,27 @@ h1 {
     float: right;
     font-size: 28px;
     font-weight: bold;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 /* Новые стили для ссылок */
 a {
     color: #ff4d4d; /* Красно-оранжевый цвет */
-    text-decoration: none; /* Убираем подчеркивание */
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline; /* Подчеркивание при наведении */
+    text-decoration: underline;
 }
-/* Новый стиль для кнопки добавления */
+
+/* Кнопка добавления */
 .add-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     width: 50px;
     height: 50px;
-    background-color: #555; /* Серый цвет */
+    background-color: #555;
     color: white;
     border: none;
     border-radius: 10px;
@@ -113,16 +160,17 @@ a:hover {
 }
 
 .add-button:hover {
-    background-color: #666; /* Более светлый серый при наведении */
+    background-color: #666;
 }
-/* Новый стиль для кнопки меню */
+
+/* Кнопка меню */
 .menu-button {
     position: fixed;
     top: 20px;
     left: 20px;
     width: 50px;
     height: 50px;
-    background-color: #555; /* Серый цвет */
+    background-color: #555;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -134,38 +182,43 @@ a:hover {
 }
 
 .menu-button:hover {
-    background-color: #666; /* Более светлый серый при наведении */
+    background-color: #666;
 }
 
 .bar {
-    width: 30px; /* Ширина полосок */
-    height: 5px; /* Высота полосок */
-    background-color: white; /* Цвет полосок */
-    margin: 3px 0; /* Отступ между полосками */
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin: 3px 0;
 }
-/* Стили для выпадающего меню */
+
+/* Выпадающее меню */
 .dropdown-menu {
-    display: none; /* Скрываем меню по умолчанию */
+    display: none;
     position: absolute;
-    top: 70px; /* Расположение под кнопкой */
-    left: 20px; /* Сместить влево */
-    background-color: #1e1e1e; /* Цвет фона меню */
-    border-radius: 10px; /* Скругление углов */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Тень для меню */
+    top: 70px;
+    left: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-item {
     display: block;
-    width: 100%; /* Занять полную ширину */
-    padding: 15px; /* Увеличенные отступы */
-    background-color: transparent; /* Прозрачный фон */
-    color: white; /* Цвет текста */
-    border: none; /* Убираем границы */
-    text-align: left; /* Выравнивание текста */
-    cursor: pointer; /* Курсор-указатель */
-    font-size: 18px; /* Увеличенный размер шрифта */
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 .dropdown-item:hover {
-    background-color: #555; /* Цвет фона при наведении */
+    background-color: #555;
+}
+.modal.open {
+    display: block; /* Показываем окно */
+    opacity: 1; /* Устанавливаем непрозрачность */
 }
