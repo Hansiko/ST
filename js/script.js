@@ -140,8 +140,14 @@ const closeButton = document.querySelector('.close-button');
 
 // Функция для закрытия модального окна
 const closeModal = () => {
-    modal.style.display = 'none';
+    modal.classList.remove('open'); // Убираем класс "open"
+    
+    // Ждем завершения анимации перед тем, как скрыть окно
+    setTimeout(() => {
+        modal.style.display = 'none'; // Скрываем модальное окно после завершения анимации
+    }, 300); // Задержка в 300ms, соответствует времени анимации в CSS
 };
+
 
 // Обработчик клика для кнопки закрытия
 closeButton.addEventListener('click', closeModal);
@@ -161,6 +167,7 @@ window.addEventListener('click', (event) => {
 });
 
 // Обработчик событий для ячеек
+// Обработчик событий для ячеек (открытие модального окна)
 cells.forEach(cell => {
     cell.addEventListener('click', () => {
         const tech = cell.getAttribute('data-tech');
@@ -183,11 +190,11 @@ cells.forEach(cell => {
             <ul>${videoLinks}</ul>
         `;
 
-        // Переопределяем обработчик события для кнопки закрытия
         const closeButton = modalContent.querySelector('.close-button');
         closeButton.addEventListener('click', closeModal);
 
-        modal.style.display = 'block';
+        modal.style.display = 'block'; // Сначала показываем окно
+        setTimeout(() => modal.classList.add('open'), 10); // Задержка для плавной анимации
     });
 });
 let isMenuOpen = false; // Флаг для отслеживания состояния меню
@@ -206,3 +213,4 @@ window.addEventListener('click', (event) => {
         isMenuOpen = false; // Меню закрыто
     }
 });
+
