@@ -75,7 +75,7 @@ p {
 
 .cell:hover {
     background: linear-gradient(160deg, #313131, #1b1b1b);
-    transform: translateY(-5px); /* Эффект поднятия при наведении */
+    transform: translateY(-15px); /* Эффект поднятия при наведении */
 }
 
 .tech-image {
