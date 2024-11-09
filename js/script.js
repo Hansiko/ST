@@ -7,7 +7,7 @@ const techData = {
         ],
         videos: [
             { title: "Brain-Computer Interface: Connecting Minds", url: "https://www.youtube.com/watch?v=3jU4F0lHHu4" },
-            { title: "Neuralink: Elon Musk's Plan", url: "https://www.youtube.com/watch?v=1w7YwOC3gOg" }
+            { title: "Neuralink: Elon Musk's Plan", url: "https://www.youtube.com/watch?v=25DgJNGwC0g" }
         ]
     },
     AR: {
