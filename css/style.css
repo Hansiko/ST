@@ -2,12 +2,26 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #121212, #303030);
+    background-image: url('../images/back.jpg');
     color: #FFFFFF;
     margin: 0;
     padding: 20px;
     font-size: 18px;
     line-height: 1.6;
+    background-size: cover; /* Фон занимает всю площадь */
+    background-position: center; /* Центрируем фон */
+    background-repeat: no-repeat; /* Убираем дублирование */
+    background-attachment: fixed;
+    scroll-behavior: smooth; /* Плавный скролл */
+    overflow: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Скрываем ползунок в Chrome, Safari и Opera */
+}
+
+.modal::-webkit-scrollbar {
+    display: none; /* Скрываем ползунок в Chrome, Safari и Opera */
 }
 
 h1 {
@@ -64,8 +78,9 @@ p {
 }
 
 .cell {
-    background: linear-gradient(160deg, #303030, #161616);
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5) ;
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
     overflow: hidden;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
@@ -74,7 +89,8 @@ p {
 }
 
 .cell:hover {
-    background: linear-gradient(160deg, #313131, #1b1b1b);
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     transform: translateY(-15px); /* Эффект поднятия при наведении */
 }
 
@@ -82,6 +98,7 @@ p {
     width: 100%;
     height: auto;
     background-color: #1e1e1e;
+    border-radius: 25px;    
 }
 
 .tech-label {
@@ -89,11 +106,12 @@ p {
     color: white;
     padding: 10px;
     text-align: center;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 25px 25px;
     word-wrap: break-word;
     min-height: 40px;
     box-sizing: border-box;
     margin-top: 10px; /* Дополнительный отступ сверху */
+    border-radius: 25px;    
 }
 
 .modal {
@@ -108,15 +126,15 @@ p {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
+    scroll-behavior: smooth; /* Плавный скролл */
 }
 
 .modal-content {
-    background: linear-gradient(120deg, rgba(49, 49, 49, 0.9), rgba(26, 26, 26, 0.7));
+    background-color: rgba(26, 26, 26, 0.5);
     backdrop-filter: blur(10px);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 25px;
     margin: 15% auto;
-    border: 1px solid #000000;
     width: 80%;
     max-width: 600px;
     word-wrap: break-word;
@@ -142,21 +160,27 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Кнопка добавления */
-.add-button {
+/* Навигационный бар */
+.navbar {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 24px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #1e1e1e;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Кнопка добавления */
+.add-button {
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 24px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -167,14 +191,8 @@ a:hover {
 
 /* Кнопка меню */
 .menu-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
     width: 50px;
     height: 50px;
-    background-color: #555;
-    border: none;
-    border-radius: 10px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -187,6 +205,7 @@ a:hover {
     background-color: #666;
 }
 
+/* Полоски в кнопке меню */
 .bar {
     width: 30px;
     height: 5px;
@@ -197,11 +216,10 @@ a:hover {
 /* Выпадающее меню */
 .dropdown-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 70px;
     left: 20px;
     background-color: #1e1e1e;
-    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -220,16 +238,13 @@ a:hover {
 .dropdown-item:hover {
     background-color: #555;
 }
-.modal.open {
-    display: block; /* Показываем окно */
-    opacity: 1; /* Устанавливаем непрозрачность */
-}
+
+/* Градиент для кнопок */
 button {
-    background: linear-gradient(90deg, #FF4500 0%, #FF6347 100%);
+    background-color: #1e1e1e;
     border: none;
     color: #fff;
     padding: 10px 20px;
-    border-radius: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -237,4 +252,12 @@ button:hover {
     background: linear-gradient(90deg, #FF6347 0%, #FF4500 100%);
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
+}
+
+.dropdown-item:hover {
+    background-color: #555;
+}
+.modal.open {
+    display: block; /* Показываем окно */
+    opacity: 1; /* Устанавливаем непрозрачность */
 }
